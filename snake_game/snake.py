@@ -1,4 +1,5 @@
 from turtle import Turtle
+from scoreboard import Scoreboard
 
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DISTANCE = 20
@@ -50,3 +51,10 @@ class Snake:
             new_y = self.segments[segment_nr - 1].ycor()
             self.segments[segment_nr].goto(new_x, new_y)
         self.head.forward(MOVE_DISTANCE)
+
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000, 1000)
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
